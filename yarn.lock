@@ -4391,7 +4391,7 @@ graphql@15.3.0:
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.3.0.tgz#3ad2b0caab0d110e3be4a5a9b2aa281e362b5278"
   integrity sha512-GTCJtzJmkFLWRfFJuoo9RWWa/FfamUHgiFosxi/X1Ani4AVWbeyBenZTNX6dM+7WSbbFfTo/25eh0LLkwHMw2w==
 
-graphql@^16.2.0:
+graphql@16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.2.0.tgz#de3150e80f1fc009590b92a9d16ab1b46e12b656"
   integrity sha512-MuQd7XXrdOcmfwuLwC2jNvx0n3rxIuNYOxUtiee5XOmfrWo613ar2U8pE7aHAKh8VwfpifubpD9IP+EdEAEOsA==
@@ -7028,7 +7028,7 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-relay@13.0.1:
+react-relay@^13.0.1:
   version "13.0.1"
   resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-13.0.1.tgz#d7338d9427c352af905c7bb7d5973e70081292c1"
   integrity sha512-Dv1vFP40+OFr1hKWs/NVlo2iTeapkqo6nUJUL1I9jytpNfg5XgjgXh+fQdfIMLM610+W+1Dxn6yZSEnnFpVQ0A==
@@ -7217,12 +7217,12 @@ relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-relay-compiler@13.0.1:
+relay-compiler@^13.0.1:
   version "13.0.1"
   resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-13.0.1.tgz#09c713647aa7e1d8cf3de9f7fb4ee6a76b32cf26"
   integrity sha512-C/qJ7IdfZ140b9JaNpuAP6WhV/Odt/tIq4sUZoTwsaOlhs+1Zu3fvIOoWKTnZT5PC6krRuw1hD7GSX6/paVpTQ==
 
-relay-runtime@13.0.1:
+relay-runtime@13.0.1, relay-runtime@^13.0.1:
   version "13.0.1"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-13.0.1.tgz#7e59a07c3b4e8c58d04bc94f6f978822d4128ffb"
   integrity sha512-n/+J8PFfLFPVUcz9OG/z2i+adnfk0INwlTkVTw0V6KJe9NI9plc5eRCJwzzwspT4pdCkis5Lcjzvzp4H+0zn8g==
