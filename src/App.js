@@ -8,6 +8,7 @@ import {
   usePreloadedQuery,
 } from "react-relay/hooks";
 import RelayEnvironment from "./RelayEnvironment";
+import ReposList from "./components/ReposList";
 
 const { Suspense } = React;
 
@@ -90,7 +91,7 @@ function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <p>{data.user.repositories.nodes[0].name}</p>
+        <ReposList data={data.user.repositories.nodes} />
       </header>
     </div>
   );
