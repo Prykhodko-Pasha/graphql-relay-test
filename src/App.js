@@ -13,8 +13,8 @@ import ReposList from "./components/ReposList";
 const { Suspense } = React;
 
 // Define a query
-const RepositoryNameQuery = graphql`
-  query AppRepositoryNameQuery {
+const RepositoriesListQuery = graphql`
+  query AppRepositoriesListQuery {
     user(login: "pedroslopez") {
       name
       repositories(last: 10, orderBy: { field: UPDATED_AT, direction: ASC }) {
@@ -75,7 +75,7 @@ const RepositoryNameQuery = graphql`
 
 // Immediately load the query as our app starts. For a real app, we'd move this
 // into our routing configuration, preloading data as we transition to new routes.
-const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery);
+const preloadedQuery = loadQuery(RelayEnvironment, RepositoriesListQuery);
 
 // Inner component that reads the preloaded query results via `usePreloadedQuery()`.
 // This works as follows:
@@ -86,7 +86,7 @@ const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery);
 // - If the query failed, it throws the failure error. For simplicity we aren't
 //   handling the failure case here.
 function App(props) {
-  const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
+  const data = usePreloadedQuery(RepositoriesListQuery, props.preloadedQuery);
 
   return (
     <div className="App">
