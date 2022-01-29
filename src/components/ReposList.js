@@ -4,7 +4,7 @@ import RepoCard from "./RepoCard";
 
 export default function ReposList({ data }) {
   return (
-    <Box sx={{ width: "98%", padding: "20px 0" }}>
+    <Box sx={{ width: "95%", margin: "40px" }}>
       <Grid container spacing={2}>
         {data.map((node, index) => (
           <RepoCard node={node} key={index} />
