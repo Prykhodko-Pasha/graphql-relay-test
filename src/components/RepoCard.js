@@ -8,15 +8,42 @@ import StatusBadge from "./StatusBadge";
 import countDaysAgo from "../helpers/countDaysAgo";
 import IssuesIcons from "./IssuesIcons";
 import PullRequestsIcons from "./PullRequestsIcons";
+import Paper from "@mui/material/Paper";
+import ForkRightIcon from "@mui/icons-material/ForkRight";
 
 export default function RepoCard({ node }) {
   console.log("node :>> ", node);
-  const { deployments, name, packageJSON, object, issues, pullRequests } = node;
+  const {
+    deployments,
+    name,
+    packageJSON,
+    object,
+    issues,
+    pullRequests,
+    forkCount,
+  } = node;
   return (
     <Grid item xs={12} md={6} lg={4}>
       <StatusBadge deployNodes={deployments.nodes}>
         <Card sx={{ height: "250px" }}>
           <CardContent>
+            <Paper
+              elevation="0"
+              sx={{
+                padding: "0 8px 0 4px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#ddd",
+                borderRadius: "10px",
+                position: "absolute",
+                top: -10,
+                left: 14,
+              }}
+            >
+              <ForkRightIcon fontSize="small" color="disabled" />
+              {forkCount}
+            </Paper>
             <Typography variant="h5" align="left">
               {name}
             </Typography>

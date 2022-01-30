@@ -4,6 +4,7 @@ import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import { styled } from "@mui/system";
 import BadgeUnstyled from "@mui/base/BadgeUnstyled";
 import CheckIcon from "@mui/icons-material/Check";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 
 const StyledBadge = styled(BadgeUnstyled)`
   position: relative;
@@ -30,12 +31,16 @@ function pullRequestStatus(node) {
   if (node.mergeable === "MERGEABLE")
     return (
       <CheckIcon
-        fontSize="16px"
         sx={{
+          fontSize: "11px",
           backgroundColor: "green",
           borderRadius: "10px",
           border: "2px solid",
           borderColor: "white",
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          transform: "translate(6.5%, 6%)",
         }}
       />
     );
@@ -49,15 +54,22 @@ function pullRequestStatus(node) {
           position: "absolute",
           bottom: 0,
           right: 0,
-          transform: "translate(8.5%, 13%)",
+          transform: "translate(9.5%, 10%)",
         }}
       />
     );
   else
     return (
-      <CheckIcon
-        fontSize="small"
-        sx={{ backgroundColor: "green", borderRadius: "10px" }}
+      <VisibilityOutlinedIcon
+        sx={{
+          fontSize: "16px",
+          backgroundColor: "gray",
+          borderRadius: "8px",
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          transform: "translate(9.5%, 10%)",
+        }}
       />
     );
 }
