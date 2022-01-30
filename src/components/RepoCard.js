@@ -7,10 +7,11 @@ import ListItem from "@mui/material/ListItem";
 import StatusBadge from "./StatusBadge";
 import countDaysAgo from "../helpers/countDaysAgo";
 import IssuesIcons from "./IssuesIcons";
+import PullRequestsIcons from "./PullRequestsIcons";
 
 export default function RepoCard({ node }) {
   console.log("node :>> ", node);
-  const { deployments, name, packageJSON, object, issues } = node;
+  const { deployments, name, packageJSON, object, issues, pullRequests } = node;
   return (
     <Grid item xs={12} md={6} lg={4}>
       <StatusBadge deployNodes={deployments.nodes}>
@@ -47,7 +48,7 @@ export default function RepoCard({ node }) {
                 >
                   Pull requests
                 </Typography>
-                <IssuesIcons issues={issues} />
+                <PullRequestsIcons nodes={pullRequests.nodes} />
               </ListItem>
             </List>
           </CardContent>
