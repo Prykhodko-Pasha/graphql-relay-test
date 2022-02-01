@@ -8,7 +8,7 @@ export default function IssuesIcons({ issues }) {
     <AvatarGroup
       max={5}
       total={issues.totalCount}
-      spacing={"8"}
+      spacing={8}
       variant="circular"
       sx={{
         width: "50%",

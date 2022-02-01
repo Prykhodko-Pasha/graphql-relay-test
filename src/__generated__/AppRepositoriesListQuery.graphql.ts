@@ -1,84 +1,81 @@
 /**
- * @generated SignedSource<<f0c894cb2c2785940a3d825f3d28b92f>>
- * @flow
+ * @generated SignedSource<<b81cc277c7fca99fdadeaada1e0f2a81>>
  * @lightSyntaxTransform
  * @nogrep
  */
 
+/* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-'use strict';
-
-/*::
-import type { ConcreteRequest, Query } from 'relay-runtime';
+import { ConcreteRequest, Query } from 'relay-runtime';
 export type DeploymentStatusState = "ERROR" | "FAILURE" | "INACTIVE" | "IN_PROGRESS" | "PENDING" | "QUEUED" | "SUCCESS" | "WAITING" | "%future added value";
 export type IssueState = "CLOSED" | "OPEN" | "%future added value";
 export type MergeableState = "CONFLICTING" | "MERGEABLE" | "UNKNOWN" | "%future added value";
-export type AppRepositoriesListQuery$variables = {|
-  login: string,
-|};
+export type AppRepositoriesListQuery$variables = {
+  login: string;
+};
 export type AppRepositoriesListQueryVariables = AppRepositoriesListQuery$variables;
-export type AppRepositoriesListQuery$data = {|
-  +user: ?{|
-    +name: ?string,
-    +repositories: {|
-      +totalCount: number,
-      +nodes: ?$ReadOnlyArray<?{|
-        +name: string,
-        +forkCount: number,
-        +issues: {|
-          +totalCount: number,
-          +nodes: ?$ReadOnlyArray<?{|
-            +state: IssueState,
-            +labels: ?{|
-              +totalCount: number,
-              +nodes: ?$ReadOnlyArray<?{|
-                +color: string,
-                +name: string,
-              |}>,
-            |},
-          |}>,
-        |},
-        +deployments: {|
-          +totalCount: number,
-          +nodes: ?$ReadOnlyArray<?{|
-            +latestStatus: ?{|
-              +state: DeploymentStatusState,
-              +updatedAt: any,
-            |},
-          |}>,
-        |},
-        +pullRequests: {|
-          +totalCount: number,
-          +nodes: ?$ReadOnlyArray<?{|
-            +author: ?{|
-              +avatarUrl: any,
-            |},
-            +mergeable: MergeableState,
-            +isDraft: boolean,
-            +isReadByViewer: ?boolean,
-          |}>,
-        |},
-        +object: ?{|
-          +history?: {|
-            +totalCount: number,
-          |},
-        |},
-        +packageJSON: ?{|
-          +text?: ?string,
-        |},
-      |}>,
-    |},
-  |},
-|};
+export type AppRepositoriesListQuery$data = {
+  readonly user: {
+    readonly name: string | null;
+    readonly repositories: {
+      readonly totalCount: number;
+      readonly nodes: ReadonlyArray<{
+        readonly name: string;
+        readonly forkCount: number;
+        readonly issues: {
+          readonly totalCount: number;
+          readonly nodes: ReadonlyArray<{
+            readonly state: IssueState;
+            readonly labels: {
+              readonly totalCount: number;
+              readonly nodes: ReadonlyArray<{
+                readonly color: string;
+                readonly name: string;
+              } | null> | null;
+            } | null;
+          } | null> | null;
+        };
+        readonly deployments: {
+          readonly totalCount: number;
+          readonly nodes: ReadonlyArray<{
+            readonly latestStatus: {
+              readonly state: DeploymentStatusState;
+              readonly updatedAt: any;
+            } | null;
+          } | null> | null;
+        };
+        readonly pullRequests: {
+          readonly totalCount: number;
+          readonly nodes: ReadonlyArray<{
+            readonly author: {
+              readonly avatarUrl: any;
+            } | null;
+            readonly mergeable: MergeableState;
+            readonly isDraft: boolean;
+            readonly isReadByViewer: boolean | null;
+          } | null> | null;
+        };
+        readonly object: {
+          readonly history?: {
+            readonly totalCount: number;
+          };
+        } | null;
+        readonly packageJSON: {
+          readonly text?: string | null;
+        } | null;
+      } | null> | null;
+    };
+  } | null;
+};
 export type AppRepositoriesListQueryResponse = AppRepositoriesListQuery$data;
-export type AppRepositoriesListQuery = {|
-  variables: AppRepositoriesListQueryVariables,
-  response: AppRepositoriesListQuery$data,
-|};
-*/
+export type AppRepositoriesListQuery = {
+  variables: AppRepositoriesListQueryVariables;
+  response: AppRepositoriesListQuery$data;
+};
 
-var node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -103,14 +100,9 @@ v2 = {
 v3 = [
   {
     "kind": "Literal",
-    "name": "last",
-    "value": 100
-  },
-  {
-    "kind": "Literal",
     "name": "orderBy",
     "value": {
-      "direction": "DESC",
+      "direction": "ASC",
       "field": "UPDATED_AT"
     }
   }
@@ -444,7 +436,7 @@ return {
                 "storageKey": null
               }
             ],
-            "storageKey": "repositories(last:100,orderBy:{\"direction\":\"DESC\",\"field\":\"UPDATED_AT\"})"
+            "storageKey": "repositories(orderBy:{\"direction\":\"ASC\",\"field\":\"UPDATED_AT\"})"
           }
         ],
         "storageKey": null
@@ -657,7 +649,7 @@ return {
                 "storageKey": null
               }
             ],
-            "storageKey": "repositories(last:100,orderBy:{\"direction\":\"DESC\",\"field\":\"UPDATED_AT\"})"
+            "storageKey": "repositories(orderBy:{\"direction\":\"ASC\",\"field\":\"UPDATED_AT\"})"
           },
           (v19/*: any*/)
         ],
@@ -666,19 +658,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e13f892d4b9eeb2fe1c7a447ebc21308",
+    "cacheID": "664fcdbecbb76bdab8a78b0b6673bf9a",
     "id": null,
     "metadata": {},
     "name": "AppRepositoriesListQuery",
     "operationKind": "query",
-    "text": "query AppRepositoriesListQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    name\n    repositories(last: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {\n      totalCount\n      nodes {\n        name\n        forkCount\n        issues(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            state\n            labels(last: 1) {\n              totalCount\n              nodes {\n                color\n                name\n                id\n              }\n            }\n            id\n          }\n        }\n        deployments(last: 1) {\n          totalCount\n          nodes {\n            latestStatus {\n              state\n              updatedAt\n              id\n            }\n            id\n          }\n        }\n        pullRequests(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            author {\n              __typename\n              avatarUrl\n              ... on Node {\n                __isNode: __typename\n                id\n              }\n            }\n            mergeable\n            isDraft\n            isReadByViewer\n            id\n          }\n        }\n        object(expression: \"main\") {\n          __typename\n          ... on Commit {\n            history {\n              totalCount\n            }\n          }\n          id\n        }\n        packageJSON: object(expression: \"master:package.json\") {\n          __typename\n          ... on Blob {\n            text\n          }\n          id\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
+    "text": "query AppRepositoriesListQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    name\n    repositories(orderBy: {field: UPDATED_AT, direction: ASC}) {\n      totalCount\n      nodes {\n        name\n        forkCount\n        issues(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            state\n            labels(last: 1) {\n              totalCount\n              nodes {\n                color\n                name\n                id\n              }\n            }\n            id\n          }\n        }\n        deployments(last: 1) {\n          totalCount\n          nodes {\n            latestStatus {\n              state\n              updatedAt\n              id\n            }\n            id\n          }\n        }\n        pullRequests(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            author {\n              __typename\n              avatarUrl\n              ... on Node {\n                __isNode: __typename\n                id\n              }\n            }\n            mergeable\n            isDraft\n            isReadByViewer\n            id\n          }\n        }\n        object(expression: \"main\") {\n          __typename\n          ... on Commit {\n            history {\n              totalCount\n            }\n          }\n          id\n        }\n        packageJSON: object(expression: \"master:package.json\") {\n          __typename\n          ... on Blob {\n            text\n          }\n          id\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node/*: any*/).hash = "908128cd772118fcb5ef2eba3eea9369";
+(node as any).hash = "1d3583edef28b898851fc168f5968914";
 
-module.exports = ((node/*: any*/)/*: Query<
-  AppRepositoriesListQuery$variables,
-  AppRepositoriesListQuery$data,
->*/);
+export default node;

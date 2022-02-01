@@ -12,7 +12,6 @@ import Paper from "@mui/material/Paper";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
 
 export default function RepoCard({ node }) {
-  console.log("node :>> ", node);
   const {
     deployments,
     name,
@@ -28,7 +27,7 @@ export default function RepoCard({ node }) {
         <Card sx={{ height: "250px" }}>
           <CardContent>
             <Paper
-              elevation="0"
+              elevation={0}
               sx={{
                 padding: "0 8px 0 4px",
                 display: "flex",
