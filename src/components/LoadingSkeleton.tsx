@@ -1,8 +1,9 @@
+import { VFC } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Skeleton from '@mui/material/Skeleton';
 
-export default function LoadingSkeleton() {
+export const LoadingSkeleton: VFC = () => {
   return (
     <Box sx={{ width: "95%", margin: "40px" }}>
       

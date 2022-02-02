@@ -1,4 +1,4 @@
-import React, {VFC,  useState } from "react";
+import { VFC, useState } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";

@@ -1,13 +1,13 @@
-import { useState } from "react";
+import {VFC,  useState } from "react";
 import { QueryRenderer } from "react-relay";
-import graphql from "babel-plugin-relay/macro";
+import {graphql} from "babel-plugin-relay/macro";
 import "./App.css";
-import RelayEnvironment from "./RelayEnvironment";
-import ReposList from "./components/ReposList";
-import { InputLogin } from "./components/InputLogin.tsx";
-import LoadingSkeleton from "./components/LoadingSkeleton.tsx";
+import RelayEnvironment from "../RelayEnvironment";
+import {ReposList} from "./ReposList";
+import { InputLogin } from "./InputLogin";
+import { LoadingSkeleton } from "./LoadingSkeleton";
 
-export default function App() {
+ const App: VFC = () => {
   const [enteredLogin, setEnteredLogin] = useState("");
 
   return (
@@ -76,13 +76,10 @@ export default function App() {
         }
       `}
       variables={{ login: enteredLogin }}
-      render={({ error, props }) => {
+      render={({ error, props }: any) => {
         if (error) {
           return <div>Error!</div>;
         }
-        // if (!props) {
-        //   return <div>Loading...</div>;
-        // }
         return (
           <div className="App">
             <header className="App-header">
@@ -97,4 +94,7 @@ export default function App() {
       }}
     />
   );
-}
+ }
+
+
+export default App;

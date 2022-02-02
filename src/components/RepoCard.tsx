@@ -4,14 +4,14 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import StatusBadge from "./StatusBadge";
-import countDaysAgo from "../helpers/countDaysAgo";
-import IssuesIcons from "./IssuesIcons";
-import PullRequestsIcons from "./PullRequestsIcons";
+import {StatusBadge} from "./StatusBadge";
+import {countDaysAgo} from "../helpers/countDaysAgo";
+import { PullRequestsIcons } from "./PullRequestsIcons";
 import Paper from "@mui/material/Paper";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
+import { IssuesIcons } from "./IssuesIcons";
 
-export default function RepoCard({ node }) {
+export const RepoCard = ({ node }: any) => {
   const {
     deployments,
     name,

@@ -27,7 +27,7 @@ const StyledBadge = styled(BadgeUnstyled)`
   }
 `;
 
-function pullRequestStatus(node) {
+const pullRequestStatus = (node: any) => {
   if (node.mergeable === "MERGEABLE")
     return (
       <CheckIcon
@@ -74,12 +74,12 @@ function pullRequestStatus(node) {
     );
 }
 
-export default function PullRequestsIcons({ nodes }) {
+export const PullRequestsIcons = ({ nodes }: any) => {
   return (
     <AvatarGroup
       max={5}
       total={nodes.totalCount}
-      spacing={"8"}
+      spacing={8}
       variant="circular"
       sx={{
         width: "50%",
@@ -88,9 +88,9 @@ export default function PullRequestsIcons({ nodes }) {
         marginLeft: "8px",
       }}
     >
-      {nodes.map((node, index) => (
+      {nodes.map((node: any, index: number) => (
         <StyledBadge
-          overlap="circular"
+          // overlap="circular"
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           badgeContent={pullRequestStatus(node)}
           key={index}

@@ -1,14 +1,14 @@
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import RepoCard from "./RepoCard";
+import { RepoCard } from "./RepoCard";
 import Typography from "@mui/material/Typography";
 
-export default function ReposList({ data }) {
+export const ReposList = ({ data }: any)=> {
   return (
     <Box sx={{ width: "95%", margin: "40px" }}>
       {data ? (
         <Grid container spacing={2}>
-          {data.map((node, index) => (
+          {data.map((node: any, index: number) => (
             <RepoCard node={node} key={index} />
           ))}
         </Grid>

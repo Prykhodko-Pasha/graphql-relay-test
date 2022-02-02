@@ -1,9 +1,9 @@
-// import Avatar from "@mui/material/Avatar";
+import { VFC } from "react";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Box from "@mui/material/Box";
 import BugReportIcon from "@mui/icons-material/BugReport";
 
-export default function IssuesIcons({ issues }) {
+export const IssuesIcons: VFC<Props> = ({ issues }) => {
   return (
     <AvatarGroup
       max={5}
@@ -17,7 +17,7 @@ export default function IssuesIcons({ issues }) {
         alignItems: "center",
       }}
     >
-      {issues.nodes.map((node, index) => (
+      {issues.nodes.map((node: any, index: number) => (
         <Box
           sx={{
             width: 38,
@@ -37,4 +37,6 @@ export default function IssuesIcons({ issues }) {
       ))}
     </AvatarGroup>
   );
-}
+};
+
+type Props = { issues: any; };

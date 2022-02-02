@@ -44,7 +44,7 @@ const StyledBadge = styled(BadgeUnstyled)`
   }
 `;
 
-function lastCommitStatusIcon(status) {
+const lastCommitStatusIcon = (status: string)=> {
   if (status === "SUCCESS")
     return (
       <CheckIcon
@@ -62,7 +62,7 @@ function lastCommitStatusIcon(status) {
   }
 }
 
-export default function StatusBadge({ deployNodes, children }) {
+export const StatusBadge = ({ deployNodes, children }: any) => {
   return deployNodes[0] ? (
     <StyledBadge
       badgeContent={lastCommitStatusIcon(deployNodes[0].latestStatus.state)}
