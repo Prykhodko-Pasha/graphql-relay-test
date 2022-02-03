@@ -1,4 +1,4 @@
-import {VFC,  useState } from "react";
+import {VFC, ReactNode, useState } from "react";
 import { QueryRenderer } from "react-relay";
 import {graphql} from "babel-plugin-relay/macro";
 import "./App.css";
@@ -6,6 +6,7 @@ import RelayEnvironment from "../RelayEnvironment";
 import {ReposList} from "./ReposList";
 import { InputLogin } from "./InputLogin";
 import { LoadingSkeleton } from "./LoadingSkeleton";
+import type {AppRepositoriesListQuery$data} from './__generated__/AppRepositoriesListQuery.graphql';
 
  const App: VFC = () => {
   const [enteredLogin, setEnteredLogin] = useState("");
@@ -76,17 +77,17 @@ import { LoadingSkeleton } from "./LoadingSkeleton";
         }
       `}
       variables={{ login: enteredLogin }}
-      render={({ error, props }: any) => {
+      render={({ error, props }: Props): ReactNode => {
         if (error) {
           return <div>Error!</div>;
         }
         return (
           <div className="App">
             <header className="App-header">
-              <InputLogin onEnter={(value) => setEnteredLogin(value)} />
+              <InputLogin onEnter={(value: string) => setEnteredLogin(value)} />
               {enteredLogin && !props && <LoadingSkeleton />}
               {enteredLogin && (
-                <ReposList data={props?.user?.repositories.nodes} />
+                <ReposList data={(props as AppRepositoriesListQuery$data)?.user?.repositories.nodes} />
               )}
             </header>
           </div>
@@ -96,5 +97,9 @@ import { LoadingSkeleton } from "./LoadingSkeleton";
   );
  }
 
+type Props = {
+  error: Error | null;
+  props: unknown;
+}
 
 export default App;
