@@ -2,7 +2,6 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { RepoCard } from "./RepoCard";
 import Typography from "@mui/material/Typography";
-// import type {AppRepositoriesListQuery$data} from './__generated__/AppRepositoriesListQuery.graphql';
 
 export const ReposList = ({ data }: any)=> {
   return (
@@ -21,3 +20,5 @@ export const ReposList = ({ data }: any)=> {
     </Box>
   );
 }
+
+

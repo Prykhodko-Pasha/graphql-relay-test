@@ -99,7 +99,7 @@ import type {AppRepositoriesListQuery$data} from './__generated__/AppRepositorie
 
 type Props = {
   error: Error | null;
-  props: unknown;
+  props: AppRepositoriesListQuery$data | unknown;
 }
 
 export default App;
