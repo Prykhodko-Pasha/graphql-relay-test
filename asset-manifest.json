@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/graphql-relay-test/static/css/main.394cea8e.css",
+    "main.js": "/graphql-relay-test/static/js/main.19961a9d.js",
+    "index.html": "/graphql-relay-test/index.html",
+    "main.394cea8e.css.map": "/graphql-relay-test/static/css/main.394cea8e.css.map",
+    "main.19961a9d.js.map": "/graphql-relay-test/static/js/main.19961a9d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.394cea8e.css",
+    "static/js/main.19961a9d.js"
+  ]
+}
