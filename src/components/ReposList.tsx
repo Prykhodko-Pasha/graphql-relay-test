@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { RepoCard } from "./RepoCard";
 import Typography from "@mui/material/Typography";
+// import {Repos} from '../graphqlTypes'
 
 export const ReposList = ({ data }: any)=> {
   return (
