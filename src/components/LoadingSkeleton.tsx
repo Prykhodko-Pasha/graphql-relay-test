@@ -7,33 +7,11 @@ export const LoadingSkeleton: VFC = () => {
     return (
         <Box sx={{ width: '95%', margin: '40px' }}>
             <Grid container spacing={2}>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
-                <Grid item xs={12} md={6} lg={4}>
-                    <Skeleton variant="rectangular" height={250} />
-                </Grid>
+                {[...Array(9)].map((item, index) => (
+                    <Grid item xs={12} md={6} lg={4} key={index}>
+                        <Skeleton variant="rectangular" height={250} />
+                    </Grid>
+                ))}
             </Grid>
         </Box>
     );
