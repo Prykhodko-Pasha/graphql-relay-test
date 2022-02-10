@@ -23,7 +23,11 @@ export const RepoCard = ({ node }: any) => {
     } = node;
     return (
         <Grid item xs={12} md={6} lg={4}>
-            <StatusBadge deployNodes={deployments.nodes}>
+            <StatusBadge
+                lastCommitStatus={
+                    deployments.nodes[0]?.latestStatus.state || null
+                }
+            >
                 <Card sx={{ height: '250px' }}>
                     <CardContent>
                         <Paper

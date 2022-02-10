@@ -1,3 +1,4 @@
+import { VFC, ReactNode } from 'react';
 import { styled } from '@mui/system';
 import BadgeUnstyled from '@mui/base/BadgeUnstyled';
 import CheckIcon from '@mui/icons-material/Check';
@@ -62,16 +63,17 @@ const lastCommitStatusIcon = (status: string) => {
     }
 };
 
-export const StatusBadge = ({ deployNodes, children }: any) => {
-    return deployNodes[0] ? (
-        <StyledBadge
-            badgeContent={lastCommitStatusIcon(
-                deployNodes[0].latestStatus.state,
-            )}
-        >
+export const StatusBadge: VFC<Props> = ({ lastCommitStatus, children }) => {
+    return lastCommitStatus ? (
+        <StyledBadge badgeContent={lastCommitStatusIcon(lastCommitStatus)}>
             {children}
         </StyledBadge>
     ) : (
         <StyledBadge badgeContent={'?'}>{children}</StyledBadge>
     );
+};
+
+type Props = {
+    lastCommitStatus: string | null;
+    children: ReactNode;
 };
