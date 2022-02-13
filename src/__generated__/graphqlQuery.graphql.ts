@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<80c256a10d692e61507fb5b557224934>>
+ * @generated SignedSource<<4166dba783259e41312b9974a85cef58>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,11 +12,11 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type DeploymentStatusState = "ERROR" | "FAILURE" | "INACTIVE" | "IN_PROGRESS" | "PENDING" | "QUEUED" | "SUCCESS" | "WAITING" | "%future added value";
 export type IssueState = "CLOSED" | "OPEN" | "%future added value";
 export type MergeableState = "CONFLICTING" | "MERGEABLE" | "UNKNOWN" | "%future added value";
-export type ReposViewRepositoriesListQuery$variables = {
+export type graphqlQuery$variables = {
   login: string;
 };
-export type ReposViewRepositoriesListQueryVariables = ReposViewRepositoriesListQuery$variables;
-export type ReposViewRepositoriesListQuery$data = {
+export type graphqlQueryVariables = graphqlQuery$variables;
+export type graphqlQuery$data = {
   readonly user: {
     readonly name: string | null;
     readonly repositories: {
@@ -69,10 +69,10 @@ export type ReposViewRepositoriesListQuery$data = {
     };
   } | null;
 };
-export type ReposViewRepositoriesListQueryResponse = ReposViewRepositoriesListQuery$data;
-export type ReposViewRepositoriesListQuery = {
-  variables: ReposViewRepositoriesListQueryVariables;
-  response: ReposViewRepositoriesListQuery$data;
+export type graphqlQueryResponse = graphqlQuery$data;
+export type graphqlQuery = {
+  variables: graphqlQueryVariables;
+  response: graphqlQuery$data;
 };
 
 const node: ConcreteRequest = (function(){
@@ -260,7 +260,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "ReposViewRepositoriesListQuery",
+    "name": "graphqlQuery",
     "selections": [
       {
         "alias": null,
@@ -454,7 +454,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "ReposViewRepositoriesListQuery",
+    "name": "graphqlQuery",
     "selections": [
       {
         "alias": null,
@@ -663,16 +663,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "f29f27b994f62c4face46bc82e5cb821",
+    "cacheID": "dda230316005287b0140edcafa4c0f8e",
     "id": null,
     "metadata": {},
-    "name": "ReposViewRepositoriesListQuery",
+    "name": "graphqlQuery",
     "operationKind": "query",
-    "text": "query ReposViewRepositoriesListQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    name\n    repositories(last: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {\n      totalCount\n      nodes {\n        name\n        forkCount\n        issues(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            state\n            labels(last: 1) {\n              totalCount\n              nodes {\n                color\n                name\n                id\n              }\n            }\n            id\n          }\n        }\n        deployments(last: 1) {\n          totalCount\n          nodes {\n            latestStatus {\n              state\n              updatedAt\n              id\n            }\n            id\n          }\n        }\n        pullRequests(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            author {\n              __typename\n              avatarUrl\n              ... on Node {\n                __isNode: __typename\n                id\n              }\n            }\n            mergeable\n            isDraft\n            isReadByViewer\n            id\n          }\n        }\n        object(expression: \"main\") {\n          __typename\n          ... on Commit {\n            history {\n              totalCount\n            }\n          }\n          id\n        }\n        packageJSON: object(expression: \"master:package.json\") {\n          __typename\n          ... on Blob {\n            text\n          }\n          id\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
+    "text": "query graphqlQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    name\n    repositories(last: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {\n      totalCount\n      nodes {\n        name\n        forkCount\n        issues(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            state\n            labels(last: 1) {\n              totalCount\n              nodes {\n                color\n                name\n                id\n              }\n            }\n            id\n          }\n        }\n        deployments(last: 1) {\n          totalCount\n          nodes {\n            latestStatus {\n              state\n              updatedAt\n              id\n            }\n            id\n          }\n        }\n        pullRequests(last: 4, states: OPEN) {\n          totalCount\n          nodes {\n            author {\n              __typename\n              avatarUrl\n              ... on Node {\n                __isNode: __typename\n                id\n              }\n            }\n            mergeable\n            isDraft\n            isReadByViewer\n            id\n          }\n        }\n        object(expression: \"main\") {\n          __typename\n          ... on Commit {\n            history {\n              totalCount\n            }\n          }\n          id\n        }\n        packageJSON: object(expression: \"master:package.json\") {\n          __typename\n          ... on Blob {\n            text\n          }\n          id\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "38dcae48dea3288db9ce1aff26d894b0";
+(node as any).hash = "6269106f6b11fd084755e92288db1d89";
 
 export default node;

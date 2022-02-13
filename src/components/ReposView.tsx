@@ -4,7 +4,7 @@ import { reposQuery } from '../graphqlQuery';
 import RelayEnvironment from '../RelayEnvironment';
 import { ReposList } from './ReposList';
 import { LoadingSkeleton } from './LoadingSkeleton';
-import type { ReposViewRepositoriesListQuery$data } from '../__generated__/ReposViewRepositoriesListQuery.graphql';
+import type { graphqlQuery$data } from '../__generated__/graphqlQuery.graphql';
 
 export const ReposView: VFC<Prop> = ({ login }) => {
     return (
@@ -20,13 +20,7 @@ export const ReposView: VFC<Prop> = ({ login }) => {
                     <>
                         {login && !props && <LoadingSkeleton />}
                         {login && props && (
-                            <ReposList
-                                data={
-                                    (
-                                        props as ReposViewRepositoriesListQuery$data
-                                    )?.user?.repositories.nodes
-                                }
-                            />
+                            <ReposList data={props as graphqlQuery$data} />
                         )}
                     </>
                 );
@@ -40,5 +34,5 @@ type Prop = {
 };
 type Props = {
     error: Error | null;
-    props: ReposViewRepositoriesListQuery$data | unknown;
+    props: graphqlQuery$data | unknown;
 };

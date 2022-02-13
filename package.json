@@ -26,7 +26,7 @@
         "build": "yarn run relay && react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "relay": "relay-compiler --src ./src --schema ./schema.graphql --artifactDirectory ./src/components/__generated__"
+        "relay": "relay-compiler --src ./src --schema ./schema.graphql --artifactDirectory ./src/__generated__"
     },
     "relay": {
         "src": "./src/",

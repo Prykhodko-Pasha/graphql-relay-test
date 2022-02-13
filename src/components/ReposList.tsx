@@ -1,23 +1,58 @@
+import { VFC } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { RepoCard } from './RepoCard';
 import Typography from '@mui/material/Typography';
-// import {Repos} from '../graphqlTypes'
+import type { graphqlQuery$data } from '../__generated__/graphqlQuery.graphql';
+import { QueryResContext } from './Context';
 
-export const ReposList = ({ data }: any) => {
+export const ReposList: VFC<Prop> = ({ data }) => {
+    // const Context = createContext(data);
     return (
-        <Box sx={{ width: '95%', margin: '40px' }}>
-            {data ? (
-                <Grid container spacing={2}>
-                    {data.map((node: any, index: number) => (
-                        <RepoCard node={node} key={index} />
-                    ))}
-                </Grid>
-            ) : (
-                <Typography component="h1" variant="h5" color="black">
-                    There is no such login &#128533;
-                </Typography>
-            )}
-        </Box>
+        <QueryResContext.Provider value={data}>
+            <Box sx={{ width: '95%', margin: '40px' }}>
+                {data ? (
+                    <Grid container spacing={2}>
+                        {data.user?.repositories.nodes?.map(
+                            (node: any, index: number) => (
+                                <RepoCard
+                                    key={index}
+                                    name={node.name}
+                                    lastCommitStatus={
+                                        node.deployments.nodes[0]?.latestStatus
+                                            .state || null
+                                    }
+                                    latestStatusUpdatedAt={
+                                        node.deployments.nodes[0]?.latestStatus
+                                            .updatedAt || null
+                                    }
+                                    packageJsonText={
+                                        node.packageJSON?.text || null
+                                    }
+                                    totalCountCommits={
+                                        node.object?.history.totalCount || 0
+                                    }
+                                    issues={node.issues}
+                                    totalCountIssues={node.issues.totalCount}
+                                    totalCountPullRequests={
+                                        node.pullRequests.nodes.totalCount
+                                    }
+                                    pullRequests={node.pullRequests}
+                                    forkCount={node.forkCount}
+                                />
+                            ),
+                        )}
+                    </Grid>
+                ) : (
+                    <Typography component="h1" variant="h5" color="black">
+                        There is no such login &#128533;
+                    </Typography>
+                )}
+            </Box>
+        </QueryResContext.Provider>
     );
+};
+
+type Prop = {
+    data: graphqlQuery$data;
 };

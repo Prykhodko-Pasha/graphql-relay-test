@@ -1,7 +1,7 @@
 import { graphql } from 'babel-plugin-relay/macro';
 
 export const reposQuery = graphql`
-    query ReposViewRepositoriesListQuery($login: String!) {
+    query graphqlQuery($login: String!) {
         user(login: $login) {
             name
             repositories(
