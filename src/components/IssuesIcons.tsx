@@ -3,11 +3,11 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
 import BugReportIcon from '@mui/icons-material/BugReport';
 
-export const IssuesIcons: VFC<Props> = ({ issues }) => {
+export const IssuesIcons: VFC<Props> = ({ issues, totalCountIssues }) => {
     return (
         <AvatarGroup
             max={5}
-            total={issues.totalCount}
+            total={totalCountIssues}
             spacing={8}
             variant="circular"
             sx={{
@@ -41,4 +41,4 @@ export const IssuesIcons: VFC<Props> = ({ issues }) => {
     );
 };
 
-type Props = { issues: any };
+type Props = { issues: any; totalCountIssues: number };

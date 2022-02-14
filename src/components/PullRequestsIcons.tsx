@@ -1,3 +1,4 @@
+import { VFC } from 'react';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -74,11 +75,14 @@ const pullRequestStatus = (node: any) => {
         );
 };
 
-export const PullRequestsIcons = ({ nodes }: any) => {
+export const PullRequestsIcons: VFC<Props> = ({
+    nodes,
+    totalCountPullRequests,
+}) => {
     return (
         <AvatarGroup
             max={5}
-            total={nodes.totalCount}
+            total={totalCountPullRequests}
             spacing={8}
             variant="circular"
             sx={{
@@ -103,4 +107,9 @@ export const PullRequestsIcons = ({ nodes }: any) => {
             ))}
         </AvatarGroup>
     );
+};
+
+type Props = {
+    nodes: any;
+    totalCountPullRequests: number;
 };

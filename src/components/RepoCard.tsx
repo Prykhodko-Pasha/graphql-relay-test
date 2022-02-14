@@ -1,3 +1,4 @@
+import { VFC } from 'react';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -11,19 +12,21 @@ import Paper from '@mui/material/Paper';
 import ForkRightIcon from '@mui/icons-material/ForkRight';
 import { IssuesIcons } from './IssuesIcons';
 
-export const RepoCard = ({ node }: any) => {
-    const {
-        deployments,
-        name,
-        packageJSON,
-        object,
-        issues,
-        pullRequests,
-        forkCount,
-    } = node;
+export const RepoCard: VFC<Props> = ({
+    name,
+    lastCommitStatus,
+    latestStatusUpdatedAt,
+    packageJsonText,
+    totalCountCommits,
+    totalCountIssues,
+    issues,
+    totalCountPullRequests,
+    pullRequests,
+    forkCount,
+}) => {
     return (
         <Grid item xs={12} md={6} lg={4}>
-            <StatusBadge deployNodes={deployments.nodes}>
+            <StatusBadge lastCommitStatus={lastCommitStatus}>
                 <Card sx={{ height: '250px' }}>
                     <CardContent>
                         <Paper
@@ -53,20 +56,15 @@ export const RepoCard = ({ node }: any) => {
                             paragraph
                         >
                             {`${
-                                packageJSON
-                                    ? JSON.parse(packageJSON.text).version ??
+                                packageJsonText
+                                    ? JSON.parse(packageJsonText).version ??
                                       '0.0.0'
                                     : '0.0.0'
                             } - ${
-                                deployments.nodes[0]
-                                    ? countDaysAgo(
-                                          deployments.nodes[0].latestStatus
-                                              .updatedAt,
-                                      )
+                                latestStatusUpdatedAt
+                                    ? countDaysAgo(latestStatusUpdatedAt)
                                     : '?'
-                            } days ago - ${
-                                object?.history.totalCount ?? 0
-                            } commits`}
+                            } days ago - ${totalCountCommits} commits`}
                         </Typography>
                         <List sx={{ width: '100%' }}>
                             <ListItem>
@@ -76,7 +74,10 @@ export const RepoCard = ({ node }: any) => {
                                 >
                                     Issues
                                 </Typography>
-                                <IssuesIcons issues={issues} />
+                                <IssuesIcons
+                                    issues={issues}
+                                    totalCountIssues={totalCountIssues}
+                                />
                             </ListItem>
                             <ListItem>
                                 <Typography
@@ -85,7 +86,12 @@ export const RepoCard = ({ node }: any) => {
                                 >
                                     Pull requests
                                 </Typography>
-                                <PullRequestsIcons nodes={pullRequests.nodes} />
+                                <PullRequestsIcons
+                                    nodes={pullRequests.nodes}
+                                    totalCountPullRequests={
+                                        totalCountPullRequests
+                                    }
+                                />
                             </ListItem>
                         </List>
                     </CardContent>
@@ -93,4 +99,17 @@ export const RepoCard = ({ node }: any) => {
             </StatusBadge>
         </Grid>
     );
+};
+
+type Props = {
+    name: string;
+    lastCommitStatus: string | null;
+    latestStatusUpdatedAt: Date | null;
+    packageJsonText: string | null;
+    totalCountCommits: number;
+    totalCountIssues: number;
+    issues: any;
+    totalCountPullRequests: number;
+    pullRequests: any;
+    forkCount: number;
 };

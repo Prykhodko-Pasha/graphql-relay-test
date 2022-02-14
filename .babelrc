@@ -3,7 +3,7 @@
         [
             "relay",
             {
-                "artifactDirectory": "./src/components/__generated__"
+                "artifactDirectory": "./src/__generated__"
             }
         ]
     ]
