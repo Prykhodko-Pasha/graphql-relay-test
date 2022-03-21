@@ -22,6 +22,7 @@ export const InputLogin: VFC<Props> = ({ onEnter }) => {
 
     return (
         <Box
+            data-testid="input"
             component="form"
             onSubmit={handleSubmit}
             sx={{
@@ -34,6 +35,7 @@ export const InputLogin: VFC<Props> = ({ onEnter }) => {
                 Enter your login:
             </Typography>
             <OutlinedInput
+                placeholder="your_login"
                 value={login}
                 name="login"
                 required
@@ -55,4 +57,4 @@ export const InputLogin: VFC<Props> = ({ onEnter }) => {
     );
 };
 
-type Props = { onEnter: (login: string) => void };
+export type Props = { onEnter: (login: string) => void };
