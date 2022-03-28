@@ -19,6 +19,7 @@ export const IssuesIcons: VFC<Props> = ({ issues, totalCountIssues }) => {
         >
             {issues.nodes.map((node: any, index: number) => (
                 <Box
+                    data-testid="issueIcon"
                     sx={{
                         width: 38,
                         height: 38,
