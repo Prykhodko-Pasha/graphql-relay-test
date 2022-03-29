@@ -94,7 +94,7 @@ export const PullRequestsIcons: VFC<Props> = ({
         >
             {nodes.map((node: any, index: number) => (
                 <StyledBadge
-                    // overlap="circular"
+                    data-testid="pullRequestIcon"
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                     badgeContent={pullRequestStatus(node)}
                     key={index}

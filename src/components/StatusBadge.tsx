@@ -49,6 +49,7 @@ const lastCommitStatusIcon = (status: string) => {
     if (status === 'SUCCESS')
         return (
             <CheckIcon
+                data-testid="lastCommitStatusSuccess"
                 fontSize="small"
                 sx={{ backgroundColor: 'green', borderRadius: '10px' }}
             />
@@ -56,6 +57,7 @@ const lastCommitStatusIcon = (status: string) => {
     else {
         return (
             <CloseIcon
+                data-testid="lastCommitStatusFail"
                 fontSize="small"
                 sx={{ backgroundColor: 'red', borderRadius: '10px' }}
             />
