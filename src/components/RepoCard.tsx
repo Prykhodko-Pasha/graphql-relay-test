@@ -44,9 +44,13 @@ export const RepoCard: VFC<Props> = ({
                             }}
                         >
                             <ForkRightIcon fontSize="small" color="disabled" />
-                            {forkCount}
+                            <span data-testid="forkCount">{forkCount}</span>
                         </Paper>
-                        <Typography variant="h5" align="left">
+                        <Typography
+                            data-testid="name"
+                            variant="h5"
+                            align="left"
+                        >
                             {name}
                         </Typography>
                         <Typography
@@ -55,16 +59,23 @@ export const RepoCard: VFC<Props> = ({
                             color="grey"
                             paragraph
                         >
-                            {`${
-                                packageJsonText
+                            <span data-testid="version">
+                                {packageJsonText
                                     ? JSON.parse(packageJsonText).version ??
                                       '0.0.0'
-                                    : '0.0.0'
-                            } - ${
-                                latestStatusUpdatedAt
+                                    : '0.0.0'}
+                            </span>
+                            {' - '}
+                            <span data-testid="updatedAt">
+                                {latestStatusUpdatedAt
                                     ? countDaysAgo(latestStatusUpdatedAt)
-                                    : '?'
-                            } days ago - ${totalCountCommits} commits`}
+                                    : '?'}
+                            </span>
+                            {' days ago - '}
+                            <span data-testid="totalCountCommits">
+                                {totalCountCommits}
+                            </span>
+                            {' commits'}
                         </Typography>
                         <List sx={{ width: '100%' }}>
                             <ListItem>

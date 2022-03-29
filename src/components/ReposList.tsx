@@ -7,7 +7,6 @@ import type { graphqlQuery$data } from '../__generated__/graphqlQuery.graphql';
 import { QueryResContext } from './Context';
 
 export const ReposList: VFC<Prop> = ({ data }) => {
-    // const Context = createContext(data);
     return (
         <QueryResContext.Provider value={data}>
             <Box sx={{ width: '95%', margin: '40px' }}>
