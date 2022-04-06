@@ -3,11 +3,11 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
 import BugReportIcon from '@mui/icons-material/BugReport';
 
-export const IssuesIcons: VFC<Props> = ({ issues, totalCountIssues }) => {
+export const IssuesIcons: VFC<Props> = ({ labels, totalCount }) => {
     return (
         <AvatarGroup
             max={5}
-            total={totalCountIssues}
+            total={totalCount}
             spacing={8}
             variant="circular"
             sx={{
@@ -17,7 +17,7 @@ export const IssuesIcons: VFC<Props> = ({ issues, totalCountIssues }) => {
                 alignItems: 'center',
             }}
         >
-            {issues.nodes.map((node: any, index: number) => (
+            {labels.map((label: string, index: number) => (
                 <Box
                     sx={{
                         width: 38,
@@ -25,9 +25,7 @@ export const IssuesIcons: VFC<Props> = ({ issues, totalCountIssues }) => {
                         borderRadius: '5px',
                         border: '2px solid',
                         borderColor: 'white',
-                        backgroundColor: `#${
-                            node.labels.nodes[0]?.color ?? 'ddd'
-                        }`,
+                        backgroundColor: `#${label}`,
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -41,4 +39,4 @@ export const IssuesIcons: VFC<Props> = ({ issues, totalCountIssues }) => {
     );
 };
 
-type Props = { issues: any; totalCountIssues: number };
+type Props = { labels: string[]; totalCount: number };

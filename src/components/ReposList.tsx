@@ -33,10 +33,6 @@ export const ReposList: VFC<Prop> = ({ data }) => {
                                         node.object?.history.totalCount || 0
                                     }
                                     issues={node.issues}
-                                    totalCountIssues={node.issues.totalCount}
-                                    totalCountPullRequests={
-                                        node.pullRequests.nodes.totalCount
-                                    }
                                     pullRequests={node.pullRequests}
                                     forkCount={node.forkCount}
                                 />

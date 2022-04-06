@@ -1,11 +1,10 @@
-import { VFC } from 'react';
+import React, { VFC } from 'react';
+import { styled } from '@mui/system';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
-import { styled } from '@mui/system';
 import BadgeUnstyled from '@mui/base/BadgeUnstyled';
-import CheckIcon from '@mui/icons-material/Check';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+
+import { PullRequestIcon } from '../types';
 
 const StyledBadge = styled(BadgeUnstyled)`
     position: relative;
@@ -28,61 +27,11 @@ const StyledBadge = styled(BadgeUnstyled)`
     }
 `;
 
-const pullRequestStatus = (node: any) => {
-    if (node.mergeable === 'MERGEABLE')
-        return (
-            <CheckIcon
-                sx={{
-                    fontSize: '11px',
-                    backgroundColor: 'green',
-                    borderRadius: '10px',
-                    border: '2px solid',
-                    borderColor: 'white',
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    transform: 'translate(6.5%, 6%)',
-                }}
-            />
-        );
-    else if (node.isDraft)
-        return (
-            <AccessTimeOutlinedIcon
-                sx={{
-                    fontSize: '16px',
-                    backgroundColor: 'gray',
-                    borderRadius: '8px',
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    transform: 'translate(9.5%, 10%)',
-                }}
-            />
-        );
-    else
-        return (
-            <VisibilityOutlinedIcon
-                sx={{
-                    fontSize: '16px',
-                    backgroundColor: 'gray',
-                    borderRadius: '8px',
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    transform: 'translate(9.5%, 10%)',
-                }}
-            />
-        );
-};
-
-export const PullRequestsIcons: VFC<Props> = ({
-    nodes,
-    totalCountPullRequests,
-}) => {
+export const PullRequestsIcons: VFC<Props> = ({ icons, totalCount }) => {
     return (
         <AvatarGroup
             max={5}
-            total={totalCountPullRequests}
+            total={totalCount}
             spacing={8}
             variant="circular"
             sx={{
@@ -92,17 +41,13 @@ export const PullRequestsIcons: VFC<Props> = ({
                 marginLeft: '8px',
             }}
         >
-            {nodes.map((node: any, index: number) => (
+            {icons.map(({ avatar, status }, index: number) => (
                 <StyledBadge
-                    // overlap="circular"
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    badgeContent={pullRequestStatus(node)}
+                    badgeContent={status}
                     key={index}
                 >
-                    <Avatar
-                        alt={`author-${index}`}
-                        src={node.author.avatarUrl}
-                    />
+                    <Avatar alt={`author-${index}`} src={avatar || ''} />
                 </StyledBadge>
             ))}
         </AvatarGroup>
@@ -110,6 +55,6 @@ export const PullRequestsIcons: VFC<Props> = ({
 };
 
 type Props = {
-    nodes: any;
-    totalCountPullRequests: number;
+    icons: PullRequestIcon[];
+    totalCount: number;
 };
