@@ -5,14 +5,19 @@ import { ReposView } from './ReposView';
 
 const App: VFC = () => {
     const [enteredLogin, setEnteredLogin] = useState('');
+    const [isLoaded, setIsLoaded] = useState(false);
 
     return (
         <div className="App">
             <header className="App-header">
                 <InputLogin
-                    onEnter={(value: string) => setEnteredLogin(value)}
+                    onEnter={async (value: string) => {
+                        setIsLoaded(false);
+                        await setEnteredLogin(value);
+                        setIsLoaded(true);
+                    }}
                 />
-                <ReposView login={enteredLogin} />
+                {isLoaded && <ReposView login={enteredLogin} />}
             </header>
         </div>
     );
