@@ -5,6 +5,7 @@ import RelayEnvironment from '../RelayEnvironment';
 import { ReposList } from './ReposList';
 import { LoadingSkeleton } from './LoadingSkeleton';
 import type { graphqlQuery$data } from '../__generated__/graphqlQuery.graphql';
+import { Alert } from '@mui/material';
 
 export const ReposView: VFC<Prop> = ({ login }) => {
     return (
@@ -14,7 +15,7 @@ export const ReposView: VFC<Prop> = ({ login }) => {
             variables={{ login }}
             render={({ error, props }: Props): ReactNode => {
                 if (error) {
-                    return <div>{error.message}</div>;
+                    return <Alert severity="error">{error.message}</Alert>;
                 }
                 return (
                     <>

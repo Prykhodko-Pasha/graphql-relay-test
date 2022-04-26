@@ -6,11 +6,14 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { StatusBadge } from './StatusBadge';
-import { countDaysAgo } from '../helpers/countDaysAgo';
-import { PullRequestsIcons } from './PullRequestsIcons';
+import { countDaysAgo } from '../helpers';
+import { IssueNode, PullRequestNode } from '../types';
 import Paper from '@mui/material/Paper';
 import ForkRightIcon from '@mui/icons-material/ForkRight';
 import { IssuesIcons } from './IssuesIcons';
+import { PullRequestsIcons } from './PullRequestsIcons';
+import transformPullRequestForIcons from '../helpers/transformPullRequestsForIcons';
+import transformIssuesForIcons from '../helpers/transformIssuesForIcons';
 
 export const RepoCard: VFC<Props> = ({
     name,
@@ -18,9 +21,7 @@ export const RepoCard: VFC<Props> = ({
     latestStatusUpdatedAt,
     packageJsonText,
     totalCountCommits,
-    totalCountIssues,
     issues,
-    totalCountPullRequests,
     pullRequests,
     forkCount,
 }) => {
@@ -75,8 +76,8 @@ export const RepoCard: VFC<Props> = ({
                                     Issues
                                 </Typography>
                                 <IssuesIcons
-                                    issues={issues}
-                                    totalCountIssues={totalCountIssues}
+                                    labels={transformIssuesForIcons(issues)}
+                                    totalCount={issues.totalCount}
                                 />
                             </ListItem>
                             <ListItem>
@@ -87,10 +88,10 @@ export const RepoCard: VFC<Props> = ({
                                     Pull requests
                                 </Typography>
                                 <PullRequestsIcons
-                                    nodes={pullRequests.nodes}
-                                    totalCountPullRequests={
-                                        totalCountPullRequests
-                                    }
+                                    icons={transformPullRequestForIcons(
+                                        pullRequests,
+                                    )}
+                                    totalCount={pullRequests.totalCount}
                                 />
                             </ListItem>
                         </List>
@@ -107,9 +108,13 @@ type Props = {
     latestStatusUpdatedAt: Date | null;
     packageJsonText: string | null;
     totalCountCommits: number;
-    totalCountIssues: number;
-    issues: any;
-    totalCountPullRequests: number;
-    pullRequests: any;
+    issues: {
+        totalCount: number;
+        nodes: IssueNode[];
+    };
+    pullRequests: {
+        totalCount: number;
+        nodes: PullRequestNode[];
+    };
     forkCount: number;
 };
